@@ -1,6 +1,6 @@
 package Lab02;
 
-public class Ex54 {
+public class Triangle {
 
 	public static void main(String[] args) {
 		
