@@ -2,7 +2,7 @@ package Lab02;
 
 import javax.swing.JOptionPane;
 
-public class Ex51 {
+public class ChoosingOption {
 
 	public static void main(String[] args) {
 		
