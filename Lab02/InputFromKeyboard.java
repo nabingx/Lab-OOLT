@@ -21,6 +21,8 @@ public class InputFromKeyboard {
 		
 		System.out.println("Mr/Mrs " + strName + ", " + iAge + " years olds. " + "Your height is " + dHeight + ".");
 
+		keyboard.close();
+
 	}
 
 }
