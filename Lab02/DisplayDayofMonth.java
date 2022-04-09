@@ -6,32 +6,43 @@ import java.util.Scanner;
 public class DisplayDayofMonth {
 	
 	public static boolean isLeapYear(int year) {
-		if (year % 4 != 0) {
-			return false;
-		} else if (year % 400 == 0) {
-		    return true;
-		} else if (year % 100 == 0) {
-		    return false;
-		} else {
-		    return true;
-		}
+		 if (year % 4 == 0) {
+
+		      // if the year is century
+		      if (year % 100 == 0) {
+
+		        // if year is divided by 400
+		        // then it is a leap year
+		        if (year % 400 == 0)
+		          return true;
+		        else
+		          return false;
+		      }
+		      
+		      // if the year is not century
+		      else
+		        return true;
+		    }
+		    
+		    else
+		      return false;
 	}
 	
 	public static void DaysInCommonYear(String month) {
 		int Day = 0;
 		switch(month){
-		case "1": Day = 31;
-		case "2": Day = 28;
-		case "3": Day = 31;
-		case "4": Day = 30;
-		case "5": Day = 31;
-		case "6": Day = 30;
-		case "7": Day = 31;
-		case "8": Day = 31;
-		case "9": Day = 30;
-		case "10": Day = 31;
-		case "11": Day = 30;
-		case "12": Day = 31;
+		case "1": Day = 31; break;
+		case "2": Day = 28; break;
+		case "3": Day = 31; break;
+		case "4": Day = 30; break;
+		case "5": Day = 31; break;
+		case "6": Day = 30; break;
+		case "7": Day = 31; break;
+		case "8": Day = 31; break;
+		case "9": Day = 30; break;
+		case "10": Day = 31; break;
+		case "11": Day = 30; break;
+		case "12": Day = 31; break;
 		}
 		System.out.println("Days of the month: " + Day);
 	}
@@ -39,18 +50,18 @@ public class DisplayDayofMonth {
 	public static void DaysInLeapYear(String month) {
 		int Day = 0;
 		switch(month){
-		case "1": Day = 31;
-		case "2": Day = 29;
-		case "3": Day = 31;
-		case "4": Day = 30;
-		case "5": Day = 31;
-		case "6": Day = 30;
-		case "7": Day = 31;
-		case "8": Day = 31;
-		case "9": Day = 30;
-		case "10": Day = 31;
-		case "11": Day = 30;
-		case "12": Day = 31;
+		case "1": Day = 31; break;
+		case "2": Day = 29; break;
+		case "3": Day = 31; break;
+		case "4": Day = 30; break;
+		case "5": Day = 31; break;
+		case "6": Day = 30; break;
+		case "7": Day = 31; break;
+		case "8": Day = 31; break;
+		case "9": Day = 30; break;
+		case "10": Day = 31; break;
+		case "11": Day = 30; break;
+		case "12": Day = 31; break;
 		}
 		System.out.println("Days of the month: " + Day);
 	}
@@ -95,8 +106,8 @@ public class DisplayDayofMonth {
 		}
 		
 		System.out.println("Year: " + year);
-		if(isLeapYear(year)) DaysInLeapYear(answer);
-		else DaysInCommonYear(answer);
+		if(isLeapYear(year)) {System.out.println(year + " is a leap year"); DaysInLeapYear(answer);} 
+		else {System.out.println(year + " is a common year"); DaysInCommonYear(answer);}
 		
 		keyboard.close();
 
