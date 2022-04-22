@@ -13,7 +13,7 @@ public class Order {
 	}*/
 	
 	void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if(qtyOrdered < 10) {
+		if(qtyOrdered < MAX_NUMBERS_ORDERED) {
 			//itemsOrdered[qtyOrdered].setTitle(disc.getTitle());
 			//itemsOrdered[qtyOrdered].setCategory(disc.getCategory());
 			//itemsOrdered[qtyOrdered].setDirector(disc.getDirector());
@@ -30,9 +30,10 @@ public class Order {
 				for(int j = i; j < qtyOrdered; j++) {
 					itemsOrdered[j] = itemsOrdered[j + 1];
 				}
+				qtyOrdered--;
+				break;
 			}
 		}
-		qtyOrdered--;
 	}
 	
 	float totalCost() {
