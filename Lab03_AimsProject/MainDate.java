@@ -10,6 +10,7 @@ public class MainDate {
 		nextDate.setMyDate("19th", "Feb", "2022");
 		nextDate.getMyDate();
 		MyDate anotherDate = new MyDate("15th Aug 2022");
+		anotherDate.accept();
 		
 	}
 }

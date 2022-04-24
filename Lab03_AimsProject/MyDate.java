@@ -11,6 +11,30 @@ public class MyDate {
 	private String year;
 	private String fullDate = day + " " + month + " " + year;
 	
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+	
 	MyDate(){
 		/*SimpleDateFormat formatter= new SimpleDateFormat("EEEE yyyy-MM-dd 'at' HH:mm:ss a");
 		Date date = new Date(System.currentTimeMillis());
@@ -65,6 +89,7 @@ public class MyDate {
 		this.month = sc.next();
 		System.out.print("Input year:");
 		this.year = sc.next();
+		MyDate date = new MyDate(this.day, this.month, this.year);
 		sc.close();
 	}
 	
