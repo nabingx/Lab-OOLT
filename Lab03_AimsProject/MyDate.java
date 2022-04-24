@@ -8,7 +8,8 @@ public class MyDate {
 	
 	private String day;
 	private String month;
-	private String year;
+	private String curYear;
+	private int year;
 	private String fullDate = day + " " + month + " " + year;
 	
 	public String getDay() {
@@ -27,11 +28,11 @@ public class MyDate {
 		this.month = month;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 	
@@ -42,11 +43,11 @@ public class MyDate {
 		
 		day = "dd";
 		month = "MMMM";
-		year = "yyyy";
+		curYear = "yyyy";
 		
 		//Set the pattern
         //String pattern = "dd MMMM yyyy, EEEE,hh:mm a";
-		String pattern = day + " " + month + " " + year + ", hh:mm a";
+		String pattern = day + " " + month + " " + curYear + ", hh:mm a";
 		// Nếu set year là int thì dùng Integer.toString(year) vẫn bị lỗi
        
         //Create SimpleDateFormat Object
@@ -62,7 +63,7 @@ public class MyDate {
         System.out.println("Date - " + today_arr[0] + /*"\nDay - " + today_arr[1] + */"\nTime - " + today_arr[1]);
 	}
 	
-	MyDate(String day, String month, String year){
+	MyDate(String day, String month, int year){
 		System.out.println(day + " " + month + " " + year);
 	}
 	
@@ -71,7 +72,7 @@ public class MyDate {
 		System.out.println(this.fullDate);
 	}
 	
-	public void setMyDate(String day, String month, String year){
+	public void setMyDate(String day, String month, int year){
 		this.day = day;
 		this.month = month;
 		this.year = year;
@@ -88,7 +89,7 @@ public class MyDate {
 		System.out.print("Input month:");
 		this.month = sc.next();
 		System.out.print("Input year:");
-		this.year = sc.next();
+		this.year = sc.nextInt();
 		MyDate date = new MyDate(this.day, this.month, this.year);
 		sc.close();
 	}
