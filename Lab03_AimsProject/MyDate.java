@@ -94,7 +94,7 @@ public class MyDate {
 	}
 	
 	public void print() {
-		MyDate a = new MyDate();
+		System.out.println(this.day + " " + this.month + " " + this.year);
 	}
 	
 }
