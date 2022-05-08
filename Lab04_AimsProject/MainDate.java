@@ -10,7 +10,10 @@ public class MainDate {
 		nextDate.getMyDate();
 		nextDate.print();
 		MyDate anotherDate = new MyDate("15th Aug 2022");
-		anotherDate.accept();
+		//anotherDate.accept();
+		MyDate stringDate = new MyDate("nineteenth", "May", "twenty thirty one"); // twenty nineteen still correct
+		stringDate.Print(); // Print()  != print()
+		// Phần print theo format như Table 1 em vẫn chưa làm kịp do phải định dạng kĩ hơn
 		
 	}
 }
