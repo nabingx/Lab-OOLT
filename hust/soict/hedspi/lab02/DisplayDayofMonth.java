@@ -1,4 +1,4 @@
-package Lab02;
+package hust.soict.hedspi.lab02;
 
 //import java.util.Arrays;
 import java.util.Scanner;
@@ -100,7 +100,7 @@ public class DisplayDayofMonth {
 		
 		System.out.println("Enter a year: ");
 		int year = keyboard.nextInt();
-		while(year != (int)year || year < 1000){	// Em đặt điều kiện < 1000 vì không rõ chỗ đề bài giải thích year không được bằng 99
+		while(year != (int)year || year < 1000){	// Em đặt đi�?u kiện < 1000 vì không rõ chỗ đ�? bài giải thích year không được bằng 99
 			System.out.println("Wrong input, enter again: ");
 			year = keyboard.nextInt();
 		}

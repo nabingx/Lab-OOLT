@@ -1,4 +1,4 @@
-package Lab02;
+package hust.soict.hedspi.lab02;
 
 public class InputMonth {
 	

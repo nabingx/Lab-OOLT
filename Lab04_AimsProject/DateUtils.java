@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class dateUtils {
+public class DateUtils {
 	
 	public void swap(MyDate date1, MyDate date2) {
 		MyDate tmp = date1;
