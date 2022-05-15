@@ -32,7 +32,9 @@ public class Order {
 			itemsOrdered[qtyOrdered] = disc;
 			qtyOrdered++;
 			nbOrders++;
-		}else System.out.println("Can't add " + disc.getTitle());
+		}else { 
+			System.out.println("Can't add " + disc.getTitle());
+		}
 	}
 	
 	void removeDigitalVideoDisc(DigitalVideoDisc disc) {
@@ -68,6 +70,7 @@ public class Order {
 	}
 
 	public String getItemsOrdered(int i) {
+		assert i > MAX_NUMBERS_ORDERED : "Out of Order Length";
 		return itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector()
 				 + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost() + "$";
 	}
@@ -77,6 +80,7 @@ public class Order {
 	}
 
 	public void setQtyOrdered(int qtyOrdered) {
+		assert qtyOrdered > MAX_NUMBERS_ORDERED : "Out of Default Length";
 		this.qtyOrdered = qtyOrdered;
 	}
 	
