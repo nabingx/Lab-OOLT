@@ -36,7 +36,7 @@ public class GarbageCreator {
 				if(arr[i] == arr[i + 1]) gab--;
 			}
 			
-			if(gab >= 20000) System.out.println("ALERT! - Too much garbages!");
+			//if(gab >= 20000) System.out.println("ALERT! - Too much garbages!");
 			assert gab < 20000 : "ALERT! - Too much garbages!";
 			
 		} catch (IOException e) {
