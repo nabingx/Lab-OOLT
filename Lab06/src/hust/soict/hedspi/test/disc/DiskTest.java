@@ -3,18 +3,22 @@ package Lab06.src.hust.soict.hedspi.test.disc;
 import Lab06.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab06.src.hust.soict.hedspi.aims.order.Order;
 import Lab06.src.hust.soict.hedspi.media.Media;
+import Lab06.src.hust.soict.hedspi.media.Book;
 
 public class DiskTest extends TestPassingParameter{
 
 	public static void main(String[] args) {
+		
+		// Hiểu rõ cách hoạt động của super
 
-		DigitalVideoDisc dvd = new DigitalVideoDisc("Stars Under The Sea");
+		Media dvd = new DigitalVideoDisc("Stars Under The Sea");
 		dvd.setCost(4.6f);
 		System.out.println("subSearch result = " + dvd.subSearch("Under"));
 		System.out.println("search result = " + dvd.search("Sea Under The"));
 		
 		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
 		jungleDVD.setCost(2.7f);
+		//System.out.println(jungleDVD.getTitle());
 		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
 		cinderellaDVD.setCost(3.2f);
 		DigitalVideoDisc[] stapeDVD = {new DigitalVideoDisc("Alpha"), new DigitalVideoDisc("Beta")};
@@ -24,20 +28,40 @@ public class DiskTest extends TestPassingParameter{
 		sigmaDVD.setCost(5.6f);
 		DigitalVideoDisc gammaDVD = new DigitalVideoDisc("Gamma");
 		gammaDVD.setCost(7.1f);
+		Book book1 = new Book("Miss Crane");
+		book1.setCost(3.8f);
 		
 		Order anOrder = new Order();
-		anOrder.addDigitalVideoDisc(jungleDVD);
-		//anOrder.addDigitalVideoDisc(cinderellaDVD);
-		anOrder.addDigitalVideoDisc(stapeDVD);
-		anOrder.addDigitalVideoDisc(dvd);
-		anOrder.addDigitalVideoDisc(sigmaDVD, gammaDVD);
+		//anOrder.addDigitalVideoDisc(jungleDVD);
+		//anOrder.addDigitalVideoDisc(cinderellaDVD); - old
+		//anOrder.addDigitalVideoDisc(stapeDVD);
+		//anOrder.addDigitalVideoDisc(dvd);
+		//anOrder.addDigitalVideoDisc(sigmaDVD, gammaDVD);
+		anOrder.addMedia(jungleDVD);
+		anOrder.addMedia(stapeDVD);
+		anOrder.addMedia(dvd);
+		anOrder.addMedia(sigmaDVD, gammaDVD);
+		//anOrder.addMedia(book1);
+		
+		anOrder.removeMedia(gammaDVD);
+		anOrder.removeMedia(book1);
 		
 		print(anOrder);
 		
-		DigitalVideoDisc luckyDisc = anOrder.getALuckyItem();
-		System.out.println("Lucky DVD Item: " + luckyDisc.getTitle() + " - " + luckyDisc.getCost() + "$ - " + anOrder.getOrderIndex(luckyDisc));
+		//DigitalVideoDisc luckyDisc = anOrder.getALuckyItem();
+		//System.out.println("Lucky DVD Item: " + luckyDisc.getTitle() + " - " + luckyDisc.getCost() + "$ - " + anOrder.getOrderIndex(luckyDisc));
 		// Vì là Lucky Item nên set lại giá = 0
 
+	}
+	
+	public static void print(Order anOrder) {
+		System.out.println("************Order************");
+		anOrder.MyDate();
+		System.out.println("Order Items:");
+		for(int i = 0; i < anOrder.getMediaSize(); i++) {
+			System.out.println((i + 1) + ". DVD - " + anOrder.getItemsOrdered2(i));
+		}
+		System.out.println("Total cost: " + anOrder.totalCost2() + "$"); // totalCost bê từ bài trước nên hàm này vẫn đúng
 	}
 
 }

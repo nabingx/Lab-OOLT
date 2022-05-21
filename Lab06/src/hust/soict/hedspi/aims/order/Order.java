@@ -26,7 +26,17 @@ public class Order {
 	}*/
 	
 	public void addMedia(Media media) {
-		itemsOrdered2.add(media);
+		if(itemsOrdered2.size() < MAX_NUMBERS_ORDERED) itemsOrdered2.add(media); // <, not <=
+		else System.out.println("Can't add " + media.getTitle());
+	}
+	
+	public void removeMedia(Media media) {
+		if(itemsOrdered2.contains(media)) itemsOrdered2.remove(media);
+		else System.out.println(media.getTitle() + " doesn't exist!");
+	}
+	
+	public int getMediaSize() {
+		return itemsOrdered2.size();
 	}
 	
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
@@ -68,10 +78,29 @@ public class Order {
 		addDigitalVideoDisc(d2);
 	}
 	
+	public void addMedia(Media[] media) {
+		for(int i = 0; i < media.length; i++) {
+			addMedia(media[i]);
+		}
+	}
+	
+	public void addMedia(Media m1, Media m2) {
+		addMedia(m1);
+		addMedia(m2);
+	}
+	
 	public float totalCost() {
 		float total = 0;
 		for(int i = 0; i < qtyOrdered; i++) {
 			total += itemsOrdered[i].getCost();
+		}
+		return total;
+	}
+	
+	public float totalCost2() {
+		float total = 0;
+		for(int i = 0; i < itemsOrdered2.size(); i++) {
+			total += itemsOrdered2.get(i).getCost();
 		}
 		return total;
 	}
@@ -80,6 +109,12 @@ public class Order {
 		assert i > MAX_NUMBERS_ORDERED : "Out of Order Length";
 		return itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector()
 				 + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost() + "$";
+	}
+	
+	public String getItemsOrdered2(int i) {
+		assert i > MAX_NUMBERS_ORDERED : "Out of Order Length";
+		return itemsOrdered2.get(i).getTitle() + " - " + itemsOrdered2.get(i).getCategory()
+				+ ": " + itemsOrdered2.get(i).getCost() + "$";
 	}
 
 	public int getQtyOrdered() {

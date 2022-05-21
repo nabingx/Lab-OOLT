@@ -11,19 +11,19 @@ public class Book extends Media{
 	private List<String> authors = new ArrayList<String>();
 
 	public String getTitle() {
-		return title;
+		return super.getTitle();
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		super.setTitle(title);
 	}
 
 	public String getCategory() {
-		return category;
+		return super.getCategory();
 	}
 
 	public void setCategory(String category) {
-		this.category = category;
+		super.setCategory(category);
 	}
 
 	public float getCost() {
