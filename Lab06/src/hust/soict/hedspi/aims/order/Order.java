@@ -116,6 +116,10 @@ public class Order {
 		return itemsOrdered2.get(i).getTitle() + " - " + itemsOrdered2.get(i).getCategory()
 				+ ": " + itemsOrdered2.get(i).getCost() + "$";
 	}
+	
+	public Media getItemsOrdered2Media(int i) {
+		return itemsOrdered2.get(i);
+	}
 
 	public int getQtyOrdered() {
 		return qtyOrdered;
@@ -158,8 +162,21 @@ public class Order {
 		return lucky;
 	}
 	
+	public Media getALuckyItem2() {
+		Media lucky = itemsOrdered2.get(getALuckyItemIndex2());
+		lucky.setCost(0);
+		return lucky;
+	}
+	
 	public int getALuckyItemIndex() {
 		double rd = Math.random() * qtyOrdered;
+		int i = (int) rd;
+		//return itemsOrdered[i];
+		return i;
+	}
+	
+	public int getALuckyItemIndex2() {
+		double rd = Math.random() * itemsOrdered2.size();
 		int i = (int) rd;
 		//return itemsOrdered[i];
 		return i;
@@ -168,6 +185,13 @@ public class Order {
 	public int getOrderIndex(DigitalVideoDisc disc) {
 		for(int i = 0; i < qtyOrdered; i++) {
 			if(itemsOrdered[i] == disc) return i + 1;  
+		}
+		return 0;
+	}
+	
+	public int getOrderIndex2(Media media) {
+		for(int i = 0; i < itemsOrdered2.size(); i++) {
+			if(itemsOrdered2.get(i) == media) return i + 1;  
 		}
 		return 0;
 	}

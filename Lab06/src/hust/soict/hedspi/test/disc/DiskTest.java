@@ -41,16 +41,19 @@ public class DiskTest extends TestPassingParameter{
 		anOrder.addMedia(stapeDVD);
 		anOrder.addMedia(dvd);
 		anOrder.addMedia(sigmaDVD, gammaDVD);
-		//anOrder.addMedia(book1);
+		anOrder.addMedia(book1);
 		
 		anOrder.removeMedia(gammaDVD);
-		anOrder.removeMedia(book1);
+		//anOrder.removeMedia(book1);
 		
 		print(anOrder);
 		
 		//DigitalVideoDisc luckyDisc = anOrder.getALuckyItem();
 		//System.out.println("Lucky DVD Item: " + luckyDisc.getTitle() + " - " + luckyDisc.getCost() + "$ - " + anOrder.getOrderIndex(luckyDisc));
 		// Vì là Lucky Item nên set lại giá = 0
+		
+		Media luckyMedia = anOrder.getALuckyItem2();
+		System.out.println("Lucky Item: " + luckyMedia.getTitle() + " - " + luckyMedia.getCost() + "$ - " + anOrder.getOrderIndex2(luckyMedia));
 
 	}
 	
@@ -59,7 +62,8 @@ public class DiskTest extends TestPassingParameter{
 		anOrder.MyDate();
 		System.out.println("Order Items:");
 		for(int i = 0; i < anOrder.getMediaSize(); i++) {
-			System.out.println((i + 1) + ". DVD - " + anOrder.getItemsOrdered2(i));
+			//System.out.println((i + 1) + ". DVD - " + anOrder.getItemsOrdered2(i));
+			System.out.println((i + 1) + ". " + anOrder.getItemsOrdered2(i));
 		}
 		System.out.println("Total cost: " + anOrder.totalCost2() + "$"); // totalCost bê từ bài trước nên hàm này vẫn đúng
 	}
