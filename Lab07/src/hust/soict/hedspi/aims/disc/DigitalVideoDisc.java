@@ -1,8 +1,9 @@
 package Lab07.src.hust.soict.hedspi.aims.disc;
 
 import Lab07.src.hust.soict.hedspi.media.Media;
+import Lab07.src.hust.soict.hedspi.media.Playable;
 
-public class DigitalVideoDisc extends Media{
+public class DigitalVideoDisc extends Media implements Playable{
 
 	private String title;
 	private String category;
@@ -15,7 +16,8 @@ public class DigitalVideoDisc extends Media{
 	}
 	
 	public void setTitle(String title) {
-		super.setTitle(title);
+		//super.setTitle(title);
+		this.title = title;
 	}
 	
 	public String getCategory() {
@@ -23,7 +25,8 @@ public class DigitalVideoDisc extends Media{
 	}
 	
 	public void setCategory(String category) {
-		super.setCategory(category);
+		//super.setCategory(category);
+		this.category = category;
 	}
 	
 	public String getDirector() {
@@ -121,6 +124,12 @@ public class DigitalVideoDisc extends Media{
 		}
 		
 		return res;
+	}
+	
+	@Override
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
 	}
 	
 }

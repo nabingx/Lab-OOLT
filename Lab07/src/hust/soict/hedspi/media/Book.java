@@ -15,7 +15,8 @@ public class Book extends Media{
 	}
 
 	public void setTitle(String title) {
-		super.setTitle(title);
+		//super.setTitle(title);
+		this.title = title;
 	}
 
 	public String getCategory() {
@@ -23,7 +24,8 @@ public class Book extends Media{
 	}
 
 	public void setCategory(String category) {
-		super.setCategory(category);
+		//super.setCategory(category);
+		this.category = category;
 	}
 
 	public float getCost() {
@@ -59,10 +61,12 @@ public class Book extends Media{
 		//(int i = 0; i < authors.size(); i++) {
 		//}
 		if(!authors.contains(authorName)) authors.add(authorName);
+		else System.out.println("This book is already in!");
 	}
 	
 	public void removeAuthor(String authorName) {
 		if(authors.contains(authorName)) authors.remove(authorName);
+		else System.out.println("This book doesn't exist!");
 	}
 
 }

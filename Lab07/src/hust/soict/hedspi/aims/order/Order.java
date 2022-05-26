@@ -165,7 +165,7 @@ public class Order {
 	
 	public Media getALuckyItem2() {
 		Media lucky = itemsOrdered2.get(getALuckyItemIndex2());
-		lucky.setCost(0);
+		//lucky.setCost(0);
 		return lucky;
 	}
 	

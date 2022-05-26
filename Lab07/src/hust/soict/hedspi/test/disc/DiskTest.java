@@ -12,7 +12,7 @@ public class DiskTest extends TestPassingParameter{
 		// Hiểu rõ cách hoạt động của super
 
 		Media dvd = new DigitalVideoDisc("Stars Under The Sea");
-		dvd.setCost(4.6f);
+		//dvd.setCost(4.6f);
 		System.out.println("subSearch result = " + dvd.subSearch("Under"));
 		System.out.println("search result = " + dvd.search("Sea Under The"));
 		
@@ -20,7 +20,7 @@ public class DiskTest extends TestPassingParameter{
 		jungleDVD.setCost(2.7f);
 		//System.out.println(jungleDVD.getTitle());
 		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
-		cinderellaDVD.setCost(3.2f);
+		//cinderellaDVD.setCost(3.2f);
 		DigitalVideoDisc[] stapeDVD = {new DigitalVideoDisc("Alpha"), new DigitalVideoDisc("Beta")};
 		stapeDVD[0].setCost(2.3f);
 		stapeDVD[1].setCost(4.3f);
