@@ -2,8 +2,9 @@ package Lab08.src.hust.soict.hedspi.aims.disc;
 
 import Lab08.src.hust.soict.hedspi.media.Media;
 import Lab08.src.hust.soict.hedspi.media.Playable;
+import Lab08.src.hust.soict.hedspi.media.Comparable;
 
-public class DigitalVideoDisc extends Media implements Playable{
+public class DigitalVideoDisc extends Media implements Playable, Comparable{
 
 	private String title;
 	private String category;

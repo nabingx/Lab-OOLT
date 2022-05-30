@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import Lab08.src.hust.soict.hedspi.aims.disc.Disc;
 import Lab08.src.hust.soict.hedspi.media.Playable;
 import Lab08.src.hust.soict.hedspi.media.Track;
+import Lab08.src.hust.soict.hedspi.media.Comparable;
 
-public class CompactDisc extends Disc implements Playable{
+public class CompactDisc extends Disc implements Playable, Comparable{
 
 	private String title;
 	private String category;
