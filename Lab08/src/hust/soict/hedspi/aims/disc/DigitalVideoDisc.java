@@ -16,8 +16,8 @@ public class DigitalVideoDisc extends Media implements Playable{
 	}
 	
 	public void setTitle(String title) {
-		//super.setTitle(title);
-		this.title = title;
+		super.setTitle(title);
+		//this.title = title;
 	}
 	
 	public String getCategory() {
@@ -25,8 +25,8 @@ public class DigitalVideoDisc extends Media implements Playable{
 	}
 	
 	public void setCategory(String category) {
-		//super.setCategory(category);
-		this.category = category;
+		super.setCategory(category);
+		//this.category = category;
 	}
 	
 	public String getDirector() {
@@ -38,19 +38,21 @@ public class DigitalVideoDisc extends Media implements Playable{
 	}
 	
 	public int getLength() {
-		return length;
+		return super.getLength();
 	}
 	
 	public void setLength(int length) {
-		this.length = length;
+		super.setLength(length);
+		//this.length = length;
 	}
 	
 	public float getCost() {
-		return cost;
+		return super.getCost();
 	}
 	
 	public void setCost(float cost) {
-		this.cost = cost;
+		super.setCost(cost);
+		//this.cost = cost;
 	}
 
 	/*public DigitalVideoDisc(String title) {

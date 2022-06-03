@@ -3,6 +3,7 @@ package Lab08.src.hust.soict.hedspi.aims.disc;
 import java.util.ArrayList;
 
 import Lab08.src.hust.soict.hedspi.aims.disc.Disc;
+import Lab08.src.hust.soict.hedspi.media.Media;
 import Lab08.src.hust.soict.hedspi.media.Playable;
 import Lab08.src.hust.soict.hedspi.media.Track;
 
@@ -19,7 +20,8 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public void setTitle(String title) {
-		this.title = title;
+		super.setTitle(title);
+		//this.title = title;
 	}
 	
 	public String getCategory() {
@@ -27,15 +29,18 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public void setCategory(String category) {
-		this.category = category;
+		super.setCategory(category);
+		//this.category = category;
 	}
 	
 	public float getCost() {
-		return cost;
+		return super.getCost();
+		//return cost;
 	}
 	
 	public void setCost(float cost) {
-		this.cost = cost;
+		super.setCost(cost);
+		//this.cost = cost;
 	}
 	
 	public String getArtist() {
@@ -79,6 +84,10 @@ public class CompactDisc extends Disc implements Playable{
 		return length;
 	}
 	
+	public int getNumberOfTracks() {
+		return tracks.size();
+	}
+	
 	@Override
 	public void play() {
 		System.out.println("Playing CD: " + this.getTitle());
@@ -89,6 +98,25 @@ public class CompactDisc extends Disc implements Playable{
 		for(Track track: tracks) {
 			track.play();
 		}
+	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		CompactDisc cd = (CompactDisc) obj;
+		if (cd == null) return 0;
+		else {
+			if (tracks.size() > cd.getNumberOfTracks()) return 1;
+			else if (tracks.size() < cd.getNumberOfTracks()) return -1;
+			else {
+				if (this.getLength() > cd.getLength()) return 1;
+				else if (this.getLength() < cd.getLength()) return -1;
+				else {
+					if (title.length() > cd.getTitle().length()) return 1;
+					else if (title.length() < cd.getTitle().length()) return -1;
+				}
+			}
+		}
+		return 0;
 	}
 	
 }

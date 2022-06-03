@@ -2,7 +2,7 @@ package Lab08.src.hust.soict.hedspi.aims.disc;
 
 import Lab08.src.hust.soict.hedspi.media.Media;
 
-public class Disc extends Media{
+public class Disc extends Media {
 	private String director;
 	private int length;
 	

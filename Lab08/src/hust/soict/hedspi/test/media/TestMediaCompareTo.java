@@ -9,6 +9,7 @@ import Lab08.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab08.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab08.src.hust.soict.hedspi.aims.order.Order;
 import Lab08.src.hust.soict.hedspi.media.Book;
+import Lab08.src.hust.soict.hedspi.media.Track;
 
 public class TestMediaCompareTo {
 
@@ -31,13 +32,20 @@ public class TestMediaCompareTo {
 		DigitalVideoDisc gammaDVD = new DigitalVideoDisc("Gamma");
 		gammaDVD.setCost(5.6f);
 		gammaDVD.setLength(6);
+		
 		CompactDisc cd1 = new CompactDisc("MVP");
+		cd1.addTrack(new Track("Hello1"));
+		cd1.addTrack(new Track("Hello2"));
+		CompactDisc cd2 = new CompactDisc("ABCD");
+		cd2.addTrack(new Track("Hello3"));
+		
 		Book book1 = new Book("Fahasa");
 		
 		System.out.println(sigmaDVD.compareTo(cinderellaDVD));
 		System.out.println(jungleDVD.compareTo(sigmaDVD));
 		System.out.println(sigmaDVD.compareTo(cd1));
 		System.out.println(sigmaDVD.compareTo(book1));
+		System.out.println(cd1.compareTo(cd2));
 		
 		Order anOrder = new Order();
 		anOrder.addDigitalVideoDisc(jungleDVD);

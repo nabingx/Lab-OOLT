@@ -12,25 +12,25 @@ public abstract class Media<T> implements Comparable<T>{
 		return title;
 	}
 
-	/*public void setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-	}*/
+	}
 
 	public String getCategory() {
 		return category;
 	}
 
-	/*public void setCategory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
-	}*/
+	}
 
 	public float getCost() {
 		return cost;
 	}
 
-	/*public void setCost(float cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
-	}*/
+	}
 
 	public int getId() {
 		return id;
@@ -85,7 +85,7 @@ public abstract class Media<T> implements Comparable<T>{
 	
 	@Override
 	public boolean equals(Object o) {
-		Media media = (Media) o;
+		Media<?> media = (Media<?>) o;
 		if (media == null) return false;
 		if (this.id == media.getId()) return true;
 		else return false;
@@ -93,24 +93,25 @@ public abstract class Media<T> implements Comparable<T>{
 	
 	@Override
 	public int compareTo(Object obj) {
-		Media media = (Media) obj;
+		Media<?> media = (Media<?>) obj;
 		if (media == null) return 0;
 		else /*if (media != null) */{
 			//if(this.title.compareTo(media.getTitle()) > 0) return -1;
 			//else if(this.title.compareTo(media.getTitle()) < 0) return 1;
 			//2 cmds above are wrong
-			if(this.cost > media.getCost()) return 1;
-			if(this.cost < media.getCost()) return -1;
+			if (this.cost > media.getCost()) return 1;
+			else if (this.cost < media.getCost()) return -1;
 			else {
 				if (this.length > media.getLength()) return 1;
-				if (this.length < media.getLength()) return -1;
+				else if (this.length < media.getLength()) return -1;
 				else {
 					if (this.title.length() > media.getTitle().length()) return 1;
-					if (this.title.length() < media.getTitle().length()) return -1;
-					else return 0;
+					else if (this.title.length() < media.getTitle().length()) return -1;
+					//else return 0;
 				}
 			}
 		}
+		return 0;
 	}
 	
 }
