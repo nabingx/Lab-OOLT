@@ -15,8 +15,8 @@ public class Book extends Media {
 	}
 
 	public void setTitle(String title) {
-		//super.setTitle(title);
-		this.title = title;
+		super.setTitle(title);
+		//this.title = title;
 	}
 
 	public String getCategory() {
@@ -24,16 +24,17 @@ public class Book extends Media {
 	}
 
 	public void setCategory(String category) {
-		//super.setCategory(category);
-		this.category = category;
+		super.setCategory(category);
+		//this.category = category;
 	}
 
 	public float getCost() {
-		return cost;
+		return super.getCost();
 	}
 
 	public void setCost(float cost) {
-		this.cost = cost;
+		super.setCost(cost);
+		//this.cost = cost;
 	}
 
 	public List<String> getAuthors() {

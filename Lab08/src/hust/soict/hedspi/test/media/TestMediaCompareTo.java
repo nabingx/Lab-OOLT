@@ -100,6 +100,7 @@ public class TestMediaCompareTo {
 		
 		System.out.println("----------------------------------");
 		
+		// Đã có modify template ở các class
 	}
 
 }
