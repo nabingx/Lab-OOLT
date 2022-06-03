@@ -106,6 +106,14 @@ public class Order {
 		return total;
 	}
 
+	public String getItemsOrderedTitle(int i) {
+		return itemsOrdered[i].getTitle();
+	}
+	
+	public int getItemsOrderedLength(int i) {
+		return itemsOrdered[i].getLength();
+	}
+	
 	public String getItemsOrdered(int i) {
 		assert i > MAX_NUMBERS_ORDERED : "Out of Order Length";
 		return itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector()

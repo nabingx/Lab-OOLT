@@ -7,6 +7,7 @@ import java.util.List;
 
 import Lab08.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab08.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import Lab08.src.hust.soict.hedspi.aims.order.Order;
 import Lab08.src.hust.soict.hedspi.media.Book;
 
 public class TestMediaCompareTo {
@@ -15,23 +16,41 @@ public class TestMediaCompareTo {
 		
 		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
 		jungleDVD.setCost(2.7f);
+		jungleDVD.setLength(87);
 		DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
 		cinderellaDVD.setCost(3.2f);
+		cinderellaDVD.setLength(124);
 		DigitalVideoDisc[] stapeDVD = {new DigitalVideoDisc("Alpha"), new DigitalVideoDisc("Beta")};
-		stapeDVD[0].setCost(2.3f);
+		stapeDVD[0].setCost(7.1f);
+		stapeDVD[0].setLength(90);
 		stapeDVD[1].setCost(4.3f);
+		stapeDVD[1].setLength(3);
 		DigitalVideoDisc sigmaDVD = new DigitalVideoDisc("Sigma");
 		sigmaDVD.setCost(5.6f);
+		sigmaDVD.setLength(4);
 		DigitalVideoDisc gammaDVD = new DigitalVideoDisc("Gamma");
-		gammaDVD.setCost(7.1f);
+		gammaDVD.setCost(5.6f);
+		gammaDVD.setLength(6);
 		CompactDisc cd1 = new CompactDisc("MVP");
 		Book book1 = new Book("Fahasa");
 		
 		System.out.println(sigmaDVD.compareTo(cinderellaDVD));
 		System.out.println(jungleDVD.compareTo(sigmaDVD));
 		System.out.println(sigmaDVD.compareTo(cd1));
+		System.out.println(sigmaDVD.compareTo(book1));
 		
-		Collection<DigitalVideoDisc> collection = new java.util.ArrayList();
+		Order anOrder = new Order();
+		anOrder.addDigitalVideoDisc(jungleDVD);
+		anOrder.addDigitalVideoDisc(cinderellaDVD);
+		anOrder.addDigitalVideoDisc(stapeDVD);
+		anOrder.addDigitalVideoDisc(sigmaDVD, gammaDVD);
+		
+		for(int i = 0; i < anOrder.getQtyOrdered(); i++) {
+			System.out.println("Playing DVD: " + anOrder.getItemsOrderedTitle(i));
+			System.out.println("DVD Length: " + anOrder.getItemsOrderedLength(i));
+		}
+		
+		Collection<DigitalVideoDisc> collection = new java.util.ArrayList<DigitalVideoDisc>();
 		
 		// Add the CD, DVD or Book objects to the ArrayList
 		collection.add(jungleDVD);
@@ -42,7 +61,8 @@ public class TestMediaCompareTo {
 		collection.add(gammaDVD);
 		//collection.add(cd1);
 		//collection.add(book1);
-		//collection.remove(cinderellaDVD);
+		System.out.println(collection.contains(sigmaDVD));
+		//collection.remove(sigmaDVD);
 		
 		// Iterate through the ArrayList and output their titles
 		// (unsorted order)
@@ -57,7 +77,7 @@ public class TestMediaCompareTo {
 		
 		// Sort the collection of DVDs - based on the compareTo()
 		// method
-		Collections.sort((List) collection);
+		Collections.sort((List<DigitalVideoDisc>) collection);
 		
 		// Iterate through the ArrayList and output their titles
 		// (unsorted order)

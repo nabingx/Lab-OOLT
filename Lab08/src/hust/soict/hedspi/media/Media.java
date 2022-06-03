@@ -6,6 +6,7 @@ public abstract class Media<T> implements Comparable<T>{
 	private String category;
 	private float cost;
 	private int id;
+	private int length;
 	
 	public String getTitle() {
 		return title;
@@ -37,6 +38,14 @@ public abstract class Media<T> implements Comparable<T>{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
 	}
 
 	public Media(String title, String category) {
@@ -90,9 +99,17 @@ public abstract class Media<T> implements Comparable<T>{
 			//if(this.title.compareTo(media.getTitle()) > 0) return -1;
 			//else if(this.title.compareTo(media.getTitle()) < 0) return 1;
 			//2 cmds above are wrong
-			if(this.title.length() > media.getTitle().length()) return 1;
-			else if(this.title.length() < media.getTitle().length()) return -1;
-			else return 0; // equals - '='
+			if(this.cost > media.getCost()) return 1;
+			if(this.cost < media.getCost()) return -1;
+			else {
+				if (this.length > media.getLength()) return 1;
+				if (this.length < media.getLength()) return -1;
+				else {
+					if (this.title.length() > media.getTitle().length()) return 1;
+					if (this.title.length() < media.getTitle().length()) return -1;
+					else return 0;
+				}
+			}
 		}
 	}
 	
