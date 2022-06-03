@@ -1,6 +1,6 @@
 package Lab08.src.hust.soict.hedspi.media;
 
-public abstract class Media {
+public abstract class Media<T> implements Comparable<T>{
 	
 	private String title;
 	private String category;
@@ -80,6 +80,20 @@ public abstract class Media {
 		if (media == null) return false;
 		if (this.id == media.getId()) return true;
 		else return false;
+	}
+	
+	@Override
+	public int compareTo(Object obj) {
+		Media media = (Media) obj;
+		if (media == null) return 0;
+		else /*if (media != null) */{
+			//if(this.title.compareTo(media.getTitle()) > 0) return -1;
+			//else if(this.title.compareTo(media.getTitle()) < 0) return 1;
+			//2 cmds above are wrong
+			if(this.title.length() > media.getTitle().length()) return 1;
+			else if(this.title.length() < media.getTitle().length()) return -1;
+			else return 0; // equals - '='
+		}
 	}
 	
 }

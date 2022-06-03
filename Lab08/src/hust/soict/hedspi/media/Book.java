@@ -2,9 +2,8 @@ package Lab08.src.hust.soict.hedspi.media;
 
 import java.util.ArrayList;
 import java.util.List;
-import Lab08.src.hust.soict.hedspi.media.Comparable;
 
-public class Book extends Media implements Comparable{
+public class Book extends Media {
 	
 	private String title;
 	private String category;

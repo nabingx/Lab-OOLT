@@ -1,8 +1,6 @@
 package Lab08.src.hust.soict.hedspi.media;
 
-import Lab08.src.hust.soict.hedspi.media.Comparable;
-
-public class Track implements Playable, Comparable{
+public class Track implements Playable {
 	
 	private String title;
 	private int length;
