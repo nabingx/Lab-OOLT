@@ -1,14 +1,22 @@
 package Lab08.src.hust.soict.hedspi.media;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Book extends Media {
 	
-	private String title;
-	private String category;
-	private float cost;
+	//private String title;
+	//private String category;
+	//private float cost;
 	private List<String> authors = new ArrayList<String>();
+	private String content;
+	private List<String> contentTokens = new ArrayList<String>();
+	private Map<String,Integer> wordFrequency = new TreeMap<String, Integer>();
+	//private TreeMap<String, Integer> contentMap = new TreeMap<String, Integer>();
 
 	public String getTitle() {
 		return super.getTitle();
@@ -45,6 +53,40 @@ public class Book extends Media {
 		this.authors = authors;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public void setContentTokens() {
+		String[] contentArr = content.split(" ");
+		for(int i = 0; i < contentArr.length; i++) {
+			contentTokens.add(contentArr[i]);
+		}
+		Collections.sort(contentTokens, (o1, o2) -> o1.compareTo(o2));
+	}
+	
+	public void getContentTokens() {
+		for (String s : contentTokens) {
+            System.out.println(s);
+        }
+	}
+	
+	public void getContentFreq() {
+		
+	}
+	
+	public void setWordFreq() {
+		String[] contentArr = content.split(" ");
+		for(int i = 0; i < contentArr.length; i++) {
+			((TreeMap<String, Integer>) wordFrequency).put(contentArr[i], 0);
+		}
+		//Collections.sort(wordFrequency, (o1, o2) -> o1.compareTo(o2));
+	}
+
 	public Book(String title) {
 		super(title);
 	}
@@ -68,6 +110,11 @@ public class Book extends Media {
 	public void removeAuthor(String authorName) {
 		if(authors.contains(authorName)) authors.remove(authorName);
 		else System.out.println("This book doesn't exist!");
+	}
+	
+	public void processContent() {
+		setContentTokens();
+		
 	}
 
 }
