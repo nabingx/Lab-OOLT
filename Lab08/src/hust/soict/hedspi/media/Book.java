@@ -1,10 +1,12 @@
 package Lab08.src.hust.soict.hedspi.media;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class Book extends Media {
@@ -75,16 +77,34 @@ public class Book extends Media {
         }
 	}
 	
-	public void getContentFreq() {
-		
+	public void getWordFreq() {
+		Set<String> keySet = wordFrequency.keySet();
+		for (String key : keySet) {
+            System.out.println(key + " - " + wordFrequency.get(key));
+        }
 	}
 	
 	public void setWordFreq() {
 		String[] contentArr = content.split(" ");
+		int[] count = new int[contentArr.length];
+		Arrays.fill(count, 1); // = memset in C lang
 		for(int i = 0; i < contentArr.length; i++) {
-			((TreeMap<String, Integer>) wordFrequency).put(contentArr[i], 0);
+			if (!wordFrequency.containsKey(contentArr[i])) ((TreeMap<String, Integer>) wordFrequency).put(contentArr[i], count[i]);
+			else {
+				for(int j = 0; j < i; j++) {
+					//if (wordFrequency.containsKey(contentArr[j])) count[i]++;
+					if (contentArr[j].equals(contentArr[i])) count[i]++;
+				}
+				((TreeMap<String, Integer>) wordFrequency).put(contentArr[i], count[i]);
+			}
 		}
-		//Collections.sort(wordFrequency, (o1, o2) -> o1.compareTo(o2));
+		for(int i : count) System.out.print(i + " "); // check int[] count
+		System.out.println();
+		for (String i : contentArr) System.out.print(i + " ");
+		System.out.println();
+		
+		// Collections.sort(wordFrequency, (o1, o2) -> o1.compareTo(o2));
+		// TreeMap tự sort nên ko cần cmd trên
 	}
 
 	public Book(String title) {
@@ -114,7 +134,14 @@ public class Book extends Media {
 	
 	public void processContent() {
 		setContentTokens();
-		
+		setWordFreq();
+	}
+	
+	@Override
+	public String toString() {
+		getContentTokens();
+		getWordFreq();
+		return getTitle() + " - " + getCategory() + " - " + getCost();
 	}
 
 }

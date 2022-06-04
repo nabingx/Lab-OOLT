@@ -7,9 +7,17 @@ public class BookTest {
 	public static void main(String[] args) {
 
 		Book book1 = new Book("Lalala");
-		book1.setContent("One Two Three Four Apex");
-		book1.setContentTokens();
+		book1.setContent("One Two Apex One Three Four One Two Four Apex");
+		book1.processContent();
+		//book1.setContentTokens();
 		book1.getContentTokens();
+		
+		//book1.setWordFreq();
+		book1.getWordFreq();
+		
+		System.out.println("------------------------------------");
+		
+		System.out.println(book1.toString());
 		
 	}
 
