@@ -2,11 +2,11 @@ package Lab09.src.hust.soict.hedspi.aims;
 
 import java.util.Scanner;
 
-import Lab08.src.hust.soict.hedspi.aims.disc.CompactDisc;
-import Lab08.src.hust.soict.hedspi.aims.order.Order;
-import Lab08.src.hust.soict.hedspi.media.Media;
-import Lab08.src.hust.soict.hedspi.test.disc.TestPassingParameter;
-import Lab08.src.hust.soict.hedspi.media.Book;
+import Lab09.src.hust.soict.hedspi.aims.disc.CompactDisc;
+import Lab09.src.hust.soict.hedspi.aims.order.Order;
+import Lab09.src.hust.soict.hedspi.media.Media;
+import Lab09.src.hust.soict.hedspi.test.disc.TestPassingParameter;
+import Lab09.src.hust.soict.hedspi.media.Book;
 
 // Nhá»› chá»�n 1 khi menu láº§n Ä‘áº§u show ra Ä‘á»ƒ khá»Ÿi táº¡o anOrder
 
