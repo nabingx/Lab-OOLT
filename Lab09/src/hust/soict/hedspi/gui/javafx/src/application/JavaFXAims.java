@@ -1,14 +1,10 @@
 package Lab09.src.hust.soict.hedspi.gui.javafx.src.application;
 
-import java.util.ArrayList;
-
 import Lab09.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab09.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab09.src.hust.soict.hedspi.aims.order.Order;
 import Lab09.src.hust.soict.hedspi.media.Media;
-import Lab09.src.hust.soict.hedspi.test.disc.TestPassingParameter;
 import Lab09.src.hust.soict.hedspi.media.Book;
-import Lab09.src.hust.soict.hedspi.aims.order.Order;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
