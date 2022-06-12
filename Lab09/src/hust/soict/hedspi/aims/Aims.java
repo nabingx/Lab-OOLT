@@ -18,8 +18,9 @@ public class Aims extends TestPassingParameter{
 		String newTitle = new String();
 		//int counter = 0;
 		Order anOrder = null;
-		int id = 0;
-		int c = 0;
+		int id = 0; // for case 3
+		int c = 0; // for case 2's switch case
+		int count = 0;
 		
 		while(choice < 6) {
 			System.out.print("Enter a number: ");
@@ -59,12 +60,17 @@ public class Aims extends TestPassingParameter{
 				case 1:
 					System.out.println("New Book's Title: ");
 					newTitle = sc.next();
-					anOrder.addMedia(new Book(newTitle));
+					Book book = new Book(newTitle);
+					count++;
+					book.setId(count);
+					anOrder.addMedia(book);
 					break;
 				case 2:
 					System.out.println("New CD's Title: ");
 					newTitle = sc.next();
 					CompactDisc cd = new CompactDisc(newTitle);
+					count++;
+					cd.setId(count);
 					anOrder.addMedia(cd);
 					System.out.println("Do you want to play the CD(yes/no)?");
 					if(sc.next().equals("yes")) cd.play();
@@ -73,6 +79,8 @@ public class Aims extends TestPassingParameter{
 					System.out.println("New DVD's Title: ");
 					newTitle = sc.next();
 					CompactDisc dvd = new CompactDisc(newTitle);
+					count++;
+					dvd.setId(count);
 					anOrder.addMedia(dvd);
 					System.out.println("Do you want to play the DVD(yes/no)?");
 					String input = sc.next();

@@ -90,7 +90,10 @@ public class JavaFXAims extends Application{
 		    	
 		    	submitBook.setOnAction(evt2 -> {
 		    		newTitle = tfInput.getText();
-		    		anOrder.addMedia(new Book(newTitle));
+		    		Book book = new Book(newTitle);
+					count++;
+					book.setId(count);
+					anOrder.addMedia(book);
 		    	});
 		    	
 		    	//flow.getChildren().removeAll(tfInput);
@@ -107,7 +110,10 @@ public class JavaFXAims extends Application{
 		    	
 		    	submitCD.setOnAction(evt2 -> {
 		    		newTitle = tfInput.getText();
-		    		anOrder.addMedia(new CompactDisc(newTitle));
+		    		CompactDisc cd = new CompactDisc(newTitle);
+					count++;
+					cd.setId(count);
+					anOrder.addMedia(cd);
 		    	});
 		    	
 			});
@@ -123,7 +129,10 @@ public class JavaFXAims extends Application{
 		    	
 		    	submitDVD.setOnAction(evt2 -> {
 		    		newTitle = tfInput.getText();
-		    		anOrder.addMedia(new DigitalVideoDisc(newTitle));
+		    		CompactDisc dvd = new CompactDisc(newTitle);
+					count++;
+					dvd.setId(count);
+					anOrder.addMedia(dvd);
 		    	});
 		    	
 			});
@@ -136,17 +145,18 @@ public class JavaFXAims extends Application{
 	    	flow.getChildren().remove(submitID);
 			tfInput = new TextField("");
 	    	tfInput.setEditable(true);
-	    	flow.getChildren().addAll(new Label("Book's Title"), tfInput, submitID);
+	    	flow.getChildren().addAll(new Label("Delete id: "), tfInput, submitID);
 	    	
 	    	submitID.setOnAction(evt2 -> {
 	    		id = Integer.parseInt(tfInput.getText());
+	    		id--;
 	    		anOrder.removeMedia(anOrder.getItemsOrdered2Media(id));
 	    	});
 	    	
 		});
 	 
 	      // Setup scene and stage
-	      primaryStage.setScene(new Scene(flow, 400, 250));
+	      primaryStage.setScene(new Scene(flow, 400, 400));
 	      primaryStage.setTitle("JavaFX Aims Project");
 	      primaryStage.show();
 		
