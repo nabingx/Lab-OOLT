@@ -12,7 +12,7 @@ import Lab10.src.hust.soict.hedspi.media.Media;
 
 public class Order {
 
-	public static final int MAX_NUMBERS_ORDERED = 10; // có thể cho cái này bằng 3 hay 4 để test báo lỗi ko add đc thêm
+	public static final int MAX_NUMBERS_ORDERED = 5; // có thể cho cái này bằng 3 hay 4 để test báo lỗi ko add đc thêm
 	private int qtyOrdered = 0;
 	private static int nbOrders = 0;
 	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
@@ -215,7 +215,7 @@ public class Order {
 		return 0;
 	}
 	
-	public Order() throws LimitExceededException{
+	/*public Order() throws LimitExceededException{
 		if (Order.nbOrders < MAX_NUMBERS_ORDERED) {
 			// TODO Set initial values for object attributes
 			nbOrders = nbOrders;
@@ -223,6 +223,18 @@ public class Order {
 		else {
 			throw new LimitExceededException("ERROR: The number of orders has reached its limit!");
 		}
+	}*/
+
+	public int getNbOrders() {
+		return nbOrders;
+	}
+
+	public void setNbOrders(int nbOrders) {
+		Order.nbOrders = nbOrders;
+	}
+
+	public int getMaxNumbersOrdered() {
+		return MAX_NUMBERS_ORDERED;
 	}
 	
 }

@@ -40,7 +40,7 @@ public class JavaFXAims extends Application{
 	int count = 0;
 	
 	@Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws LimitExceededException {
 		
 		submitBook = new Button("Submit for book");
 		submitCD = new Button("Submit for cd");
@@ -52,12 +52,7 @@ public class JavaFXAims extends Application{
 		
 		case_1 = new Button("Create a new order");
 		case_1.setOnAction(evt -> {
-			try {
-				anOrder = new Order();
-			} catch (LimitExceededException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			anOrder = new Order();
 			System.out.println("Initialize anOrder successfully!");
 		});
 		

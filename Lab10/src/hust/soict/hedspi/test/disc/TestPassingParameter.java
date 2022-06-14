@@ -7,7 +7,7 @@ import Lab10.src.hust.soict.hedspi.aims.order.Order;
 
 public class TestPassingParameter {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 
 		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
 		jungleDVD.setCost(2.7f);
@@ -22,12 +22,8 @@ public class TestPassingParameter {
 		gammaDVD.setCost(7.1f);
 		
 		Order anOrder = null;
-		try {
-			anOrder = new Order();
-		} catch (LimitExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		anOrder = new Order();
+		
 		anOrder.addDigitalVideoDisc(jungleDVD);
 		//anOrder.addDigitalVideoDisc(cinderellaDVD);
 		anOrder.addDigitalVideoDisc(stapeDVD);

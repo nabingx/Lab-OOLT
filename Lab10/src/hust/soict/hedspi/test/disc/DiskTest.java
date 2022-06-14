@@ -34,22 +34,20 @@ public class DiskTest extends TestPassingParameter{
 		book1.setCost(3.8f);
 		
 		Order anOrder = null;
-		try {
-			anOrder = new Order();
-		} catch (LimitExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//anOrder.addDigitalVideoDisc(jungleDVD);
-		//anOrder.addDigitalVideoDisc(cinderellaDVD); - old
-		//anOrder.addDigitalVideoDisc(stapeDVD);
-		//anOrder.addDigitalVideoDisc(dvd);
-		//anOrder.addDigitalVideoDisc(sigmaDVD, gammaDVD);
+		anOrder = new Order();
+		
 		anOrder.addMedia(jungleDVD);
 		anOrder.addMedia(stapeDVD);
 		anOrder.addMedia(dvd);
 		anOrder.addMedia(sigmaDVD, gammaDVD);
 		anOrder.addMedia(book1);
+		
+		try {
+			Order(anOrder);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("A problem occured: " + e);
+		}
 		
 		anOrder.removeMedia(gammaDVD);
 		//anOrder.removeMedia(book1);
@@ -74,6 +72,16 @@ public class DiskTest extends TestPassingParameter{
 			System.out.println((i + 1) + ". " + anOrder.getItemsOrdered2(i));
 		}
 		System.out.println("Total cost: " + anOrder.totalCost2() + "$"); // totalCost bê từ bài trước nên hàm này vẫn đúng
+	}
+	
+	public static void Order(Order anOrder) throws LimitExceededException{
+		if (anOrder.getNbOrders() < anOrder.getMaxNumbersOrdered()) {
+			// TODO Set initial values for object attributes
+			anOrder.setNbOrders(anOrder.getNbOrders());
+		}
+		else {
+			throw new LimitExceededException("ERROR: The number of orders has reached its limit!");
+		}
 	}
 
 }
