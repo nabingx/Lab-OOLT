@@ -1,5 +1,7 @@
 package Lab09.src.hust.soict.hedspi.gui.javafx.src.application;
 
+// fix to display everything on GUI
+
 import Lab09.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab09.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab09.src.hust.soict.hedspi.aims.order.Order;
