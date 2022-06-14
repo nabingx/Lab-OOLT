@@ -14,7 +14,7 @@ import Lab10.src.hust.soict.hedspi.media.Book;
 
 public class Aims extends TestPassingParameter{
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 		showMenu();
 		int choice = 0;
 		String newTitle = new String();
@@ -34,12 +34,7 @@ public class Aims extends TestPassingParameter{
 				break;
 			}
 			case 1:
-				try {
-					anOrder = new Order();
-				} catch (LimitExceededException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				anOrder = new Order();
 				System.out.println("Initialize anOrder successfully!");
 				break;
 			/*case 2:
