@@ -215,7 +215,7 @@ public class Order {
 		return 0;
 	}
 	
-	/*public Order() throws LimitExceededException{
+	public Order() throws LimitExceededException{
 		if (Order.nbOrders < MAX_NUMBERS_ORDERED) {
 			// TODO Set initial values for object attributes
 			nbOrders = nbOrders;
@@ -223,6 +223,6 @@ public class Order {
 		else {
 			throw new LimitExceededException("ERROR: The number of orders has reached its limit!");
 		}
-	}*/
+	}
 	
 }

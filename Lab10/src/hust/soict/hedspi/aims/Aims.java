@@ -2,6 +2,8 @@ package Lab10.src.hust.soict.hedspi.aims;
 
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 import Lab10.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab10.src.hust.soict.hedspi.aims.order.Order;
 import Lab10.src.hust.soict.hedspi.media.Media;
@@ -32,7 +34,12 @@ public class Aims extends TestPassingParameter{
 				break;
 			}
 			case 1:
-				anOrder = new Order();
+				try {
+					anOrder = new Order();
+				} catch (LimitExceededException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Initialize anOrder successfully!");
 				break;
 			/*case 2:

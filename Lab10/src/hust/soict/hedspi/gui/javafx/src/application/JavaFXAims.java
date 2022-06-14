@@ -1,5 +1,7 @@
 package Lab10.src.hust.soict.hedspi.gui.javafx.src.application;
 
+import javax.naming.LimitExceededException;
+
 import Lab10.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab10.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab10.src.hust.soict.hedspi.aims.order.Order;
@@ -50,7 +52,12 @@ public class JavaFXAims extends Application{
 		
 		case_1 = new Button("Create a new order");
 		case_1.setOnAction(evt -> {
-			anOrder = new Order();
+			try {
+				anOrder = new Order();
+			} catch (LimitExceededException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println("Initialize anOrder successfully!");
 		});
 		

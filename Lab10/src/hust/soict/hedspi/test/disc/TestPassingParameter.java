@@ -1,5 +1,7 @@
 package Lab10.src.hust.soict.hedspi.test.disc;
 
+import javax.naming.LimitExceededException;
+
 import Lab10.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab10.src.hust.soict.hedspi.aims.order.Order;
 
@@ -19,7 +21,13 @@ public class TestPassingParameter {
 		DigitalVideoDisc gammaDVD = new DigitalVideoDisc("Gamma");
 		gammaDVD.setCost(7.1f);
 		
-		Order anOrder = new Order();
+		Order anOrder = null;
+		try {
+			anOrder = new Order();
+		} catch (LimitExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		anOrder.addDigitalVideoDisc(jungleDVD);
 		//anOrder.addDigitalVideoDisc(cinderellaDVD);
 		anOrder.addDigitalVideoDisc(stapeDVD);
