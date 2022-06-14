@@ -75,7 +75,14 @@ public class Aims extends TestPassingParameter{
 					cd.setId(count);
 					anOrder.addMedia(cd);
 					System.out.println("Do you want to play the CD(yes/no)?");
-					if(sc.next().equals("yes")) cd.play();
+					if(sc.next().equals("yes"))
+						try {
+							cd.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+							System.err.println("A problem occured: " + e);
+						}
 					break;
 				case 3:
 					System.out.println("New DVD's Title: ");
@@ -86,7 +93,14 @@ public class Aims extends TestPassingParameter{
 					anOrder.addMedia(dvd);
 					System.out.println("Do you want to play the DVD(yes/no)?");
 					String input = sc.next();
-					if(input.equals("yes")) dvd.play();
+					if(input.equals("yes"))
+						try {
+							dvd.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+							System.err.println("A problem occured: " + e);
+						}
 					break;
 				default:
 					System.out.println("Wrong number of disc");

@@ -2,10 +2,12 @@ package Lab10.src.hust.soict.hedspi.test.disc;
 
 import javax.naming.LimitExceededException;
 
+import Lab10.src.hust.soict.hedspi.aims.PlayerException;
 import Lab10.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab10.src.hust.soict.hedspi.aims.order.Order;
 import Lab10.src.hust.soict.hedspi.media.Media;
 import Lab10.src.hust.soict.hedspi.media.Book;
+import Lab10.src.hust.soict.hedspi.aims.disc.*;
 
 public class DiskTest extends TestPassingParameter{
 
@@ -32,6 +34,9 @@ public class DiskTest extends TestPassingParameter{
 		gammaDVD.setCost(7.1f);
 		Book book1 = new Book("Miss Crane");
 		book1.setCost(3.8f);
+		CompactDisc cd1 = new CompactDisc("Amily");
+		cd1.setCost(3.2f);
+		cd1.setLength(-2);
 		
 		Order anOrder = null;
 		anOrder = new Order();
@@ -46,7 +51,7 @@ public class DiskTest extends TestPassingParameter{
 			Order(anOrder);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("A problem occured: " + e);
+			System.err.println("A problem occured: " + e);
 		}
 		
 		anOrder.removeMedia(gammaDVD);
@@ -60,6 +65,21 @@ public class DiskTest extends TestPassingParameter{
 		
 		Media luckyMedia = anOrder.getALuckyItem2();
 		System.out.println("Lucky Item: " + luckyMedia.getTitle() + " - " + luckyMedia.getCost() + "$ - " + anOrder.getOrderIndex2(luckyMedia));
+		
+		jungleDVD.setLength(-1);
+		try {
+			jungleDVD.play();
+		} catch (PlayerException e) {
+			// TODO Auto-generated catch block
+			System.err.println("A problem occured: " + e);
+		}
+		
+		try {
+			cd1.play();
+		} catch (PlayerException e) {
+			// TODO Auto-generated catch block
+			System.err.println("A problem occured: " + e);
+		}
 
 	}
 	
