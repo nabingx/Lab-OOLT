@@ -2,6 +2,7 @@ package Lab10.src.hust.soict.hedspi.gui.javafx.src.application;
 
 import javax.naming.LimitExceededException;
 
+import Lab10.src.hust.soict.hedspi.aims.PlayerException;
 import Lab10.src.hust.soict.hedspi.aims.disc.CompactDisc;
 import Lab10.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 import Lab10.src.hust.soict.hedspi.aims.order.Order;
@@ -32,6 +33,8 @@ public class JavaFXAims extends Application{
 	private Button submitCD;
 	private Button submitDVD;
 	private Button submitID;
+	private Button playCD;
+	private Button playDVD;
 	private TextField tfInput;
 	
 	Order anOrder = null;
@@ -51,22 +54,12 @@ public class JavaFXAims extends Application{
 		case_0.setOnAction(evt -> System.exit(0));
 		
 		case_1 = new Button("Create a new order");
-		case_1.setOnAction(evt -> {
-			anOrder = new Order();
-			System.out.println("Initialize anOrder successfully!");
-		});
 		
 		case_2 = new Button("Add item to the order");
 		
 		case_3 = new Button("Delete item by id");
 		
 		case_4 = new Button("Display the items list of order");
-		case_4.setOnAction(evt -> {
-			for(int i = 0; i < anOrder.getMediaSize(); i++) {
-				System.out.println( (i + 1) + ". " + anOrder.getItemsOrdered2(i));
-			}
-			System.out.println("------------------------------");
-		});
 		
 	      // Create a scene graph of node rooted at a FlowPane, do the same with cd and dvd
 	      FlowPane flow = new FlowPane();
@@ -75,6 +68,20 @@ public class JavaFXAims extends Application{
 	      flow.setHgap(10);  // Horizontal gap between nodes in pixels
 	      flow.setAlignment(Pos.CENTER);  // Alignment
 	      flow.getChildren().addAll(new Label("Order Management Application: "), case_0, case_1, case_2, case_3, case_4);
+	      
+	    case_1.setOnAction(evt -> {
+			anOrder = new Order();
+			//System.out.println("Initialize anOrder successfully!");
+			flow.getChildren().add(new Label("Initialize anOrder successfully!"));
+		});
+	      
+	    case_4.setOnAction(evt -> {
+			for(int i = 0; i < anOrder.getMediaSize(); i++) {
+				//System.out.println( (i + 1) + ". " + anOrder.getItemsOrdered2(i));
+				flow.getChildren().add(new Label( (i + 1) + ". " + anOrder.getItemsOrdered2(i) + " || "));
+			}
+			//System.out.println("------------------------------");
+		});
 	      
 	    case_2.setOnAction(evt -> {
 	    	//tfInput = new TextField("");
@@ -116,6 +123,18 @@ public class JavaFXAims extends Application{
 					count++;
 					cd.setId(count);
 					anOrder.addMedia(cd);
+					playCD = new Button("Play CD");
+					playCD.setOnAction(evt3 -> {
+						try {
+							cd.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+							//System.err.println("A problem occured: " + e);
+							flow.getChildren().add(new Label("A problem occured: " + e));
+						}
+					});
+					flow.getChildren().add(playCD);
 		    	});
 		    	
 			});
@@ -131,10 +150,22 @@ public class JavaFXAims extends Application{
 		    	
 		    	submitDVD.setOnAction(evt2 -> {
 		    		newTitle = tfInput.getText();
-		    		CompactDisc dvd = new CompactDisc(newTitle);
+		    		DigitalVideoDisc dvd = new DigitalVideoDisc(newTitle);
 					count++;
 					dvd.setId(count);
 					anOrder.addMedia(dvd);
+					playDVD = new Button("Play DVD");
+					playDVD.setOnAction(evt3 -> {
+						try {
+							dvd.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+							//System.err.println("A problem occured: " + e);
+							flow.getChildren().add(new Label("A problem occured: " + e));
+						}
+					});
+					flow.getChildren().add(playDVD);
 		    	});
 		    	
 			});
