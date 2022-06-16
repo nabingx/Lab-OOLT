@@ -85,14 +85,29 @@ public abstract class Media<T> implements Comparable<T>{
 	
 	@Override
 	public boolean equals(Object o) {
+		try {
+			Media<?> media = (Media<?>) o;
+		} catch (ClassCastException e){
+			System.err.println("ERROR :" + e + " - Unable to cast type!");
+		} catch (NullPointerException e){
+			System.err.println("ERROR :" + e + " - Pointing to null object");
+		}
 		Media<?> media = (Media<?>) o;
 		if (media == null) return false;
-		if (this.id == media.getId()) return true;
+		//if (this.id == media.getId()) return true;
+		if (this.title == media.getTitle() && this.cost == media.getCost()) return true;
 		else return false;
 	}
 	
 	@Override
 	public int compareTo(Object obj) {
+		try {
+			Media<?> media = (Media<?>) obj;
+		} catch (ClassCastException e){
+			System.err.println("ERROR :" + e + " - Unable to cast type!");
+		} catch (NullPointerException e){
+			System.err.println("ERROR :" + e + " - Pointing to null object");
+		}
 		Media<?> media = (Media<?>) obj;
 		if (media == null) return 0;
 		else /*if (media != null) */{

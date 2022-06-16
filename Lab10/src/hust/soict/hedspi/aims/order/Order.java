@@ -13,6 +13,7 @@ import Lab10.src.hust.soict.hedspi.media.Media;
 public class Order {
 
 	public static final int MAX_NUMBERS_ORDERED = 5; // có thể cho cái này bằng 3 hay 4 để test báo lỗi ko add đc thêm
+	public static double FIXED_PROBALITY = 0.6;
 	private int qtyOrdered = 0;
 	private static int nbOrders = 0;
 	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
@@ -182,9 +183,12 @@ public class Order {
 	}
 	
 	public Media getALuckyItem2() {
-		Media lucky = itemsOrdered2.get(getALuckyItemIndex2());
+		int ratio = getALuckyItemIndex2();
+		Media lucky = itemsOrdered2.get(ratio);
+		if(getPercentageLuckyItem2(ratio) > 0) return lucky;
+		else return null;
 		//lucky.setCost(0);
-		return lucky;
+		//return lucky;
 	}
 	
 	public int getALuckyItemIndex() {
@@ -233,8 +237,23 @@ public class Order {
 		Order.nbOrders = nbOrders;
 	}
 
+	public static double getFIXED_PROBALITY() {
+		return FIXED_PROBALITY;
+	}
+
+	public static void setFIXED_PROBALITY(double fIXED_PROBALITY) {
+		FIXED_PROBALITY = fIXED_PROBALITY;
+	}
+
 	public int getMaxNumbersOrdered() {
 		return MAX_NUMBERS_ORDERED;
+	}
+	
+	public double getPercentageLuckyItem2(int base_rate) { // Threshold
+		//int base_rate = getALuckyItemIndex2();
+		double rate = base_rate / itemsOrdered2.size();
+		if (rate < FIXED_PROBALITY) return rate;
+		else return 0;
 	}
 	
 }

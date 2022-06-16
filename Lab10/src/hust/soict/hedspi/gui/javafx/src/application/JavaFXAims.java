@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,13 +30,23 @@ public class JavaFXAims extends Application{
 	private Button case_2_dvd;
 	private Button case_3;
 	private Button case_4;
+	private Button case_5;
 	private Button submitBook;
 	private Button submitCD;
 	private Button submitDVD;
 	private Button submitID;
+	private Button submitThreshold;
 	private Button playCD;
 	private Button playDVD;
+	private Button costBook;
+	private Button costCD;
+	private Button costDVD;
+	private Button submitCostBook;
+	private Button submitCostCD;
+	private Button submitCostDVD;
 	private TextField tfInput;
+	private TextField costInput;
+	private TextField thInput;
 	
 	Order anOrder = null;
 	String newTitle = new String();
@@ -50,30 +61,36 @@ public class JavaFXAims extends Application{
 		submitDVD = new Button("Submit for dvd");
 		submitID = new Button("Submit for id");
 		
+		
+		submitCostBook = new Button("Submit for Book's Cost");
+		submitCostCD = new Button("Submit for CD's Cost");
+		submitCostDVD = new Button("Submit for DVD's Cost");
+		
+		
 		case_0 = new Button("Exit");
 		case_0.setOnAction(evt -> System.exit(0));
-		
 		case_1 = new Button("Create a new order");
-		
 		case_2 = new Button("Add item to the order");
-		
 		case_3 = new Button("Delete item by id");
-		
 		case_4 = new Button("Display the items list of order");
+		case_5 = new Button("Input Threshold value");
+		
 		
 	      // Create a scene graph of node rooted at a FlowPane, do the same with cd and dvd
 	      FlowPane flow = new FlowPane();
+		  //VBox flow = new VBox();
 	      flow.setPadding(new Insets(15, 12, 15, 12));  // top, right, bottom, left
 	      flow.setVgap(10);  // Vertical gap between nodes in pixels
 	      flow.setHgap(10);  // Horizontal gap between nodes in pixels
 	      flow.setAlignment(Pos.CENTER);  // Alignment
-	      flow.getChildren().addAll(new Label("Order Management Application: "), case_0, case_1, case_2, case_3, case_4);
+	      flow.getChildren().addAll(new Label("Order Management Application: "), case_0, case_1, case_2, case_3, case_4, case_5);
 	      
 	    case_1.setOnAction(evt -> {
 			anOrder = new Order();
 			//System.out.println("Initialize anOrder successfully!");
 			flow.getChildren().add(new Label("Initialize anOrder successfully!"));
 		});
+	    
 	      
 	    case_4.setOnAction(evt -> {
 			for(int i = 0; i < anOrder.getMediaSize(); i++) {
@@ -82,6 +99,7 @@ public class JavaFXAims extends Application{
 			}
 			//System.out.println("------------------------------");
 		});
+	    
 	      
 	    case_2.setOnAction(evt -> {
 	    	//tfInput = new TextField("");
@@ -100,9 +118,29 @@ public class JavaFXAims extends Application{
 		    	submitBook.setOnAction(evt2 -> {
 		    		newTitle = tfInput.getText();
 		    		Book book = new Book(newTitle);
+		    		//book.setCost(Float.parseFloat(tfInput.getText()));
 					count++;
 					book.setId(count);
 					anOrder.addMedia(book);
+					costBook = new Button("Cost for Book");
+					costBook.setOnAction(evt3 -> {
+						
+						flow.getChildren().remove(submitCostBook);
+						costInput = new TextField("");
+						costInput.setEditable(true);
+				    	flow.getChildren().addAll(new Label("Book's Cost"), costInput, submitCostBook);
+				    	
+				    	submitCostBook.setOnAction(evt4 -> {
+				    		
+				    		String cost = costInput.getText();
+				    		book.setCost(Float.parseFloat(cost));
+				    		
+				    	});
+				    	
+				    	//flow.getChildren().add(submitCostBook);
+					});
+					//flow.getChildren().add(submitCostBook);
+					flow.getChildren().add(costBook);
 		    	});
 		    	
 		    	//flow.getChildren().removeAll(tfInput);
@@ -123,6 +161,25 @@ public class JavaFXAims extends Application{
 					count++;
 					cd.setId(count);
 					anOrder.addMedia(cd);
+					costCD = new Button("Cost for CD");
+					costCD.setOnAction(evt3 -> {
+						
+						flow.getChildren().remove(submitCostCD);
+						costInput = new TextField("");
+						costInput.setEditable(true);
+				    	flow.getChildren().addAll(new Label("CD's Cost"), costInput, submitCostCD);
+				    	
+				    	submitCostCD.setOnAction(evt4 -> {
+				    		
+				    		String cost = costInput.getText();
+				    		cd.setCost(Float.parseFloat(cost));
+				    		
+				    	});
+				    	
+				    	//flow.getChildren().add(submitCostCD);
+					});
+					flow.getChildren().add(costCD);
+					
 					playCD = new Button("Play CD");
 					playCD.setOnAction(evt3 -> {
 						try {
@@ -154,6 +211,25 @@ public class JavaFXAims extends Application{
 					count++;
 					dvd.setId(count);
 					anOrder.addMedia(dvd);
+					costDVD = new Button("Cost for DVD");
+					costDVD.setOnAction(evt3 -> {
+						
+						flow.getChildren().remove(submitCostDVD);
+						costInput = new TextField("");
+						costInput.setEditable(true);
+				    	flow.getChildren().addAll(new Label("DVD's Cost"), costInput, submitCostDVD);
+				    	
+				    	submitCostDVD.setOnAction(evt4 -> {
+				    		
+				    		String cost = costInput.getText();
+				    		dvd.setCost(Float.parseFloat(cost));
+				    		
+				    	});
+				    	
+				    	//flow.getChildren().add(submitCostDVD);
+					});
+					flow.getChildren().add(costDVD);
+					
 					playDVD = new Button("Play DVD");
 					playDVD.setOnAction(evt3 -> {
 						try {
@@ -173,6 +249,7 @@ public class JavaFXAims extends Application{
 			flow.getChildren().addAll(new Label("Choose type: "), case_2_book, case_2_cd, case_2_dvd);
 		});
 	    
+	    
 	    case_3.setOnAction(evt -> {
 	    	
 	    	flow.getChildren().remove(submitID);
@@ -187,6 +264,26 @@ public class JavaFXAims extends Application{
 	    	});
 	    	
 		});
+	    
+	    
+	    case_5.setOnAction(evt -> {
+	    	
+	    	flow.getChildren().remove(submitThreshold);
+			thInput = new TextField("");
+			thInput.setEditable(true);
+	    	flow.getChildren().addAll(new Label("New Threshold Value"), thInput, submitThreshold);
+	    	
+	    	submitThreshold.setOnAction(evt2 -> {
+	    		
+	    		Order.setFIXED_PROBALITY(Double.parseDouble(thInput.getText()));
+	    		if ((count / anOrder.totalCost2()) > Order.getFIXED_PROBALITY()) {
+	    			flow.getChildren().add(thInput);
+	    			anOrder.getALuckyItem2();
+	    		}
+	    		
+	    	});
+	    	
+	    });
 	 
 	      // Setup scene and stage
 	      primaryStage.setScene(new Scene(flow, 400, 400));
