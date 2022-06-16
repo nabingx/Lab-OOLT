@@ -278,7 +278,7 @@ public class JavaFXAims extends Application{
 	    		
 	    		Order.setFIXED_PROBALITY(Double.parseDouble(thInput.getText()));
 	    		if ((count / anOrder.totalCost2()) > Order.getFIXED_PROBALITY()) {
-	    			flow.getChildren().add(thInput);
+	    			flow.getChildren().add(new Label(thInput.getText()));
 	    			anOrder.getALuckyItem2();
 	    		}
 	    		
