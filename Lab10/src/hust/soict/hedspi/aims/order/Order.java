@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.naming.LimitExceededException;
 
 import Lab10.src.hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import Lab10.src.hust.soict.hedspi.media.Book;
 import Lab10.src.hust.soict.hedspi.media.Media;
 
 public class Order {
@@ -18,6 +19,7 @@ public class Order {
 	private static int nbOrders = 0;
 	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	private ArrayList<Media> itemsOrdered2 = new ArrayList<Media>();
+	private float threshold = 0.0f;
 	
 	private String day;
 	private String month;
@@ -34,6 +36,7 @@ public class Order {
 			itemsOrdered2.add(media); // <, not <=
 			qtyOrdered++;
 			nbOrders++;
+			//threshold += media.getCost() * 0.12;
 		}
 		else System.out.println("Can't add " + media.getTitle());
 	}
@@ -43,6 +46,7 @@ public class Order {
 			itemsOrdered2.remove(media);
 			qtyOrdered--;
 			nbOrders--;
+			threshold -= media.getCost() * 0.12;
 		}
 		else System.out.println(media.getTitle() + " doesn't exist!");
 	}
@@ -186,7 +190,11 @@ public class Order {
 		int ratio = getALuckyItemIndex2();
 		Media lucky = itemsOrdered2.get(ratio);
 		if(getPercentageLuckyItem2(ratio) > 0) return lucky;
-		else return null;
+		else {
+			Media temp = new Book(null);
+			temp.setCost(0);
+			return temp;
+		}
 		//lucky.setCost(0);
 		//return lucky;
 	}
@@ -243,6 +251,20 @@ public class Order {
 
 	public static void setFIXED_PROBALITY(double fIXED_PROBALITY) {
 		FIXED_PROBALITY = fIXED_PROBALITY;
+	}
+
+	public float getThreshold() {
+		//sthreshold = totalCost2() * 0.12;
+		return threshold;
+	}
+
+	public void setThreshold(float threshold) {
+		this.threshold = threshold;
+	}
+	
+	public float defaultThreshold() {
+		return threshold = (float) (totalCost2() * 0.12);
+		
 	}
 
 	public int getMaxNumbersOrdered() {

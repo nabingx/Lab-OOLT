@@ -272,18 +272,21 @@ public class JavaFXAims extends Application{
 	    	flow.getChildren().remove(submitThreshold);
 			thInput = new TextField("");
 			thInput.setEditable(true);
-	    	flow.getChildren().addAll(new Label("New Threshold Value"), thInput, submitThreshold);
+			anOrder.defaultThreshold(); // get the default threshold
+	    	flow.getChildren().addAll(new Label("Default Threshold Value: " + anOrder.getThreshold() + " -> New Threshold Value"), thInput, submitThreshold);
 	    	
 	    	submitThreshold.setOnAction(evt2 -> {
 	    		
-	    		Order.setFIXED_PROBALITY(Double.parseDouble(thInput.getText()));
+	    		anOrder.setThreshold(Float.parseFloat(thInput.getText()));
 	    		if ((count / anOrder.totalCost2()) > Order.getFIXED_PROBALITY()) {
-	    			flow.getChildren().add(new Label(thInput.getText()));
-	    			anOrder.getALuckyItem2();
+	    			flow.getChildren().add(new Label("New Threshold Value changed: " + anOrder.getThreshold()));
+	    			Media test = anOrder.getALuckyItem2();
+	    			do{
+	    				test = anOrder.getALuckyItem2();
+	    			} while (test.getCost() > anOrder.getThreshold());
+	    			flow.getChildren().add(new Label("Lucky Item's Cost: " + String.valueOf(test.getCost())));
 	    		}
-	    		
 	    	});
-	    	
 	    });
 	 
 	      // Setup scene and stage
