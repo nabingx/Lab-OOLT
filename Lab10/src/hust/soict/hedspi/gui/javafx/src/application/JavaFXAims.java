@@ -60,6 +60,7 @@ public class JavaFXAims extends Application{
 		submitCD = new Button("Submit for cd");
 		submitDVD = new Button("Submit for dvd");
 		submitID = new Button("Submit for id");
+		submitThreshold = new Button("Submit for Threshold");
 		
 		
 		submitCostBook = new Button("Submit for Book's Cost");
