@@ -13,8 +13,10 @@ public class MyApplication  extends Application {
     public void start(Stage primaryStage) {
         try {
             // Read file fxml and draw interface.
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("application/MyScene.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyScene.fxml"));
 
+        	Parent root = FXMLLoader.load(getClass().getResource("MyScene.fxml"));
+        	
             primaryStage.setTitle("My Application");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
